@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .booked-rooms {
+            margin-top: 20px;
+        }
+        .room {
+            background: #eee;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hotel Management System</h1>
+        <form id="bookingForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="roomType">Room Type:</label>
+            <select id="roomType" required>
+                <option value="Single">Single</option>
+                <option value="Double">Double</option>
+                <option value="Suite">Suite</option>
+            </select>
+
+            <button type="submit">Book Room</button>
+        </form>
+
+        <div class="booked-rooms">
+            <h2>Booked Rooms</h2>
+            <div id="roomsList"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const roomType = document.getElementById('roomType').value;
+
+            const roomDiv = document.createElement('div');
+            roomDiv.className = 'room';
+            roomDiv.innerHTML = `<strong>Name:</strong> ${name} <br> <strong>Room Type:</strong> ${roomType}`;
+
+            document.getElementById('roomsList').appendChild(roomDiv);
+
+            // Clear the form
+            document.getElementById('bookingForm').reset();
+        });
+    </script>
+</body>
+</html>
